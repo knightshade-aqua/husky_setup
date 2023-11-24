@@ -43,5 +43,17 @@ Nvidia jetson installation: https://docs.nvidia.com/sdk-manager/install-with-sdk
      SUBSYSTEMS=="usb", ATTRS{manufacturer}=="Prolific*", SYMLINK+="prolific prolific_$attr{devpath}", MODE="0666"```
 * Reload the rules file
   ```sudo udevadm control --reload-rules
-     sudo udevadm trigger 
+     sudo udevadm trigger
+
+# Spinnaker library installation
+* Uninstall old spinnaker libraries
+  `sudo apt-get remove libspinnaker*; sudo apt-get autoremove`
+* Download libspinnaker 2.6.0 from the given URL. For jetson download the arm64 archive
+  `https://packages.clearpathrobotics.com/stable/flir/Spinnaker/Ubuntu20.04/`
+* Extract it onto the jetson
+* Open the folder in which you have extracted the spinnaker to in the terminal and run the following command
+  `./install_spinnaker_arm.sh`
+* Clone the noetic-devel branch of https://github.com/ros-drivers/flir_camera_driver to the src folder of the worspace
+* Remove the build and devel
+* Rebuild the workspace with catkin_make
 
