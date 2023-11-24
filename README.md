@@ -35,7 +35,7 @@ Nvidia jetson installation: https://docs.nvidia.com/sdk-manager/install-with-sdk
   * Remove husky tests from the package.xml file
 
 # Debugging serial cable connections issues between husky robot and zed box jetson xavier NX
-* Add the following command to `/etc/ros/setup.bash`
+* Add the following command to `/etc/ros/setup.bash`  
   `export HUSKY_PORT=/dev/ttyUSB0`
   
 
