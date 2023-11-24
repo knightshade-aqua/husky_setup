@@ -55,5 +55,5 @@ Nvidia jetson installation: https://docs.nvidia.com/sdk-manager/install-with-sdk
   `./install_spinnaker_arm.sh`
 * Clone the noetic-devel branch of https://github.com/ros-drivers/flir_camera_driver to the src folder of the worspace
 * Remove the build and devel
-* Rebuild the workspace with catkin_make
+* Rebuild the workspace with catkin_make   
 
