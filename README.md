@@ -43,5 +43,5 @@ Nvidia jetson installation: https://docs.nvidia.com/sdk-manager/install-with-sdk
      SUBSYSTEMS=="usb", ATTRS{manufacturer}=="Prolific*", SYMLINK+="prolific prolific_$attr{devpath}", MODE="0666"```
 * Reload the rules file
   ```sudo udevadm control --reload-rules
-     sudo udevadm trigger```  
+     sudo udevadm trigger 
 
