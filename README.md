@@ -12,3 +12,7 @@ This repository contains instructions to setup clearpath husky with Ubuntu 20.04
 * After the flash process is complete, do not shut  the installation process, but do not continue with it either, instead connect the zed box to a monitor and keyboard.
 * Run the script file. This will change the memory from emmc to main memory.
 * Once the script has completed its procedure, reboot the jetson and continue with the installation process.
+
+Reference:
+Nvidia jetson installation: https://docs.nvidia.com/sdk-manager/install-with-sdkm-jetson/index.html 
+
