@@ -16,31 +16,30 @@ Initially we have to install Ubuntu 20.04 operating systems on the zed box. A re
 * After the flash process is complete, do not shut  the installation process, but do not continue with it either, instead connect the zed box to a monitor and keyboard.
 * Run the script file. This will change the memory from emmc to main memory.
 * Once the script has completed its procedure, reboot the jetson and continue with the installation process.
+Ubuntu 20.04 will be installed on Nvidia jetson at the end of the process
 
 Reference:
-Nvidia jetson installation: https://docs.nvidia.com/sdk-manager/install-with-sdkm-jetson/index.html 
+Nvidia jetson installation: https://docs.nvidia.com/sdk-manager/install-with-sdkm-jetson/index.html   
 Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husky/jetson_xavier.html
 
 # Husky software setup
 * Once the jetson has been configured with the software, we will begin to install husky packages.
 * The husky package has to installed from source from this github repository: https://github.com/husky/husky_robot.git
-* ``` # Following are the instructions to install from source
-      # Create workspace 
-       cd mkdir -p catkin_ws/src 
+* Create the workspace
+  ```  cd mkdir -p catkin_ws/src 
        cd catkin_ws/src 
-       git clone https://github.com/husky/husky_robot.git
-
-      # Build workspace 
-       cd ~/catkin_ws/ rosdep install --from-paths src --ignore-src -r -y 
+       git clone https://github.com/husky/husky_robot.git ```
+* Remove husky tests from the package.xml file
+* Build workspace
+    ```cd ~/catkin_ws/ rosdep install --from-paths src --ignore-src -r -y 
        sudo apt install python3-catkin-tools python3-osrf-pycommon 
-       catkin_make
-
-      # Add setup to the source on terminal startup 
-       echo 'source ~/catkin_ws/devel/setup.bash'>>~/.bashrc source ~/.bashrc ```
-  * Remove husky tests from the package.xml file
+       catkin_make```
+* Add setup to the source on terminal startup   
+      ` echo 'source ~/catkin_ws/devel/setup.bash'>>~/.bashrc source ~/.bashrc `
+  
 
 # Debugging serial cable connections issues between husky robot and zed box jetson xavier NX
-* Add the following command to `/etc/ros/setup.bash`  
+* Add the following command to `/etc/ros/setup.bash `  
   `export HUSKY_PORT=/dev/ttyUSB0`
 * Modify prolific rule:
   ```sudo nano /etc/udev/rules.d/50-husky-mcu.rules
@@ -48,7 +47,7 @@ Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husk
      SUBSYSTEMS=="usb", ATTRS{manufacturer}=="Prolific*", SYMLINK+="prolific prolific_$attr{devpath}", MODE="0666"```
 * Reload the rules file
   ```sudo udevadm control --reload-rules
-     sudo udevadm trigger
+     sudo udevadm trigger ```
 
 # Spinnaker library installation
 * Uninstall old spinnaker libraries
