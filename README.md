@@ -28,7 +28,7 @@ Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husk
 * Create the workspace
   ```  cd mkdir -p catkin_ws/src 
        cd catkin_ws/src 
-       git clone https://github.com/husky/husky_robot.git ```
+       git clone https://github.com/husky/husky_robot.git 
 * Remove husky tests from the package.xml file
 * Build workspace
     ```cd ~/catkin_ws/ rosdep install --from-paths src --ignore-src -r -y 
