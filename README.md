@@ -1,7 +1,11 @@
-# husky_setup
-This repository contains instructions to setup clearpath husky with Ubuntu 20.04
+# Setup of clearpath husky robot
+This repository contains instructions to setup clearpath husky with Ubuntu 20.04 installed on a Nvidia Jetson Xavier NX Zed Box. To do the setup proceed in the following manner:  
+* First install Ubuntu 20.04 operating systems on Nvidia Jetson Xavier NX Zed Box.
+* Then install Husky software from clearpath from source as mention in the installation steps below. This has to be done to allow the husky and zed box to communicate with each other.
+* Answers to certain issues that might arise during the installation are addressed here.
 
 # Ubuntu 20.04 installation on Clearpath Husky
+Initially we have to install Ubuntu 20.04 operating systems on the zed box.
 * Download SDK from: https://developer.nvidia.com/sdk-manager on the host PC.
 * Connect the host PC to the Jetson board. (The board can be ON or OFF)
 * Start the SDK manager on the host PC.
