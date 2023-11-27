@@ -33,7 +33,7 @@ Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husk
 * Build workspace
     ```cd ~/catkin_ws/ rosdep install --from-paths src --ignore-src -r -y 
        sudo apt install python3-catkin-tools python3-osrf-pycommon 
-       catkin_make```
+       catkin_make
 * Add setup to the source on terminal startup   
       ` echo 'source ~/catkin_ws/devel/setup.bash'>>~/.bashrc source ~/.bashrc `
   
