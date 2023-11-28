@@ -32,8 +32,8 @@ Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husk
 
 # Husky software setup
 * Once the jetson has been configured with the software, we will begin to install husky packages.
-* In order to prepare the installation of the husky software execute the following command in a terminal window and follow the instructions as they appear in the terminal
-  `wget -c https://raw.githubusercontent.com/clearpathrobotics/ros_computer_setup/main/install.sh`
+* In order to prepare the installation of the husky software execute the following command in a terminal window and follow the instructions as they appear in the terminal  
+  `wget -c https://raw.githubusercontent.com/clearpathrobotics/ros_computer_setup/main/install.sh`  
   `bash install.sh`
 * Reboot the husky after the script finishes executing.
 * If you do not have interent connectivity after the reboot of the jetson check **Internet Connectivity** section to solve it.
