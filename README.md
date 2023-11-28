@@ -9,15 +9,15 @@ Initially we have to install Ubuntu 20.04 operating systems on the zed box. A re
 * Download SDK from: https://developer.nvidia.com/sdk-manager on the host PC.
 * Connect the host PC to the Jetson board. (The board can be ON or OFF)
 * Start the SDK manager on the host PC.
-* Step 1:
+* Step 1:  
   ![Step_1][Images/jetson-step1-mid.png]
     * The jetson device should automatically detected. Your host PC OS should also be automatically detected. If not you can manually select it from the device dropdown list.
     * Select the required jetpack version.
     * You can deselect the Host Machine option in Step 1, as the components need not be installed in the host PC for the target board to function.
-* Step 2:
+* Step 2:  
   ![Step_2][Images/jetson-step2-mid.png]
 * You can select the components to be downloaded in the Step 2.
-* Step 3:
+* Step 3:  
   ![Step_1][Images/jetson-step3-mid.png]
   * Continue with Step 3 to install the components and choose Manual setup as shown in the Figure below. Keep the storage device as EMMC. If you change it to NVME the flash will not be sucessful. It will give errors when trying to boot the Nvidia jetson.
     ![Step_1][Images/jetson-flash-manual1.png]
@@ -32,7 +32,11 @@ Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husk
 
 # Husky software setup
 * Once the jetson has been configured with the software, we will begin to install husky packages.
-* The husky package has to installed from source from this github repository: https://github.com/husky/husky_robot.git
+* In order to prepare the installation of the husky software execute the following command in a terminal window and follow the instructions as they appear in the terminal
+  ``` wget -c https://raw.githubusercontent.com/clearpathrobotics/ros_computer_setup/main/install.sh
+      bash install.sh ```
+* There might be a situation were ROS may not be installed. In such a case install ROS from the following link: http://wiki.ros.org/noetic/Installation/Ubuntu
+* The husky package for noetic is not yet available as a .bin file. Hence it has to be installed from source from this github repository: https://github.com/husky/husky_robot.git
 * Create the workspace
   ```  cd mkdir -p catkin_ws/src 
        cd catkin_ws/src 
@@ -44,6 +48,7 @@ Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husk
        catkin_make
 * Add setup to the source on terminal startup   
       ` echo 'source ~/catkin_ws/devel/setup.bash'>>~/.bashrc source ~/.bashrc `
+* <br>Note:</br> If you get errors in Spinnaker.h library, follow the Spinnaker library installation section given below
   
 
 # Debugging serial cable connections issues between husky robot and zed box jetson xavier NX
