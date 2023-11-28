@@ -4,15 +4,23 @@ This repository contains instructions to setup clearpath husky with Ubuntu 20.04
 * Then install Husky software from clearpath from source as mention in the installation steps below. This has to be done to allow the husky and zed box to communicate with each other.
 * Answers to certain issues that might arise during the installation are addressed here.
 
-# Ubuntu 20.04 installation on Clearpath Husky
+# Ubuntu 20.04 installation on Nvidia Jetson Xavier NX Zed Box
 Initially we have to install Ubuntu 20.04 operating systems on the zed box. A reference to the installation process can be found here: https://docs.nvidia.com/sdk-manager/install-with-sdkm-jetson/index.html 
 * Download SDK from: https://developer.nvidia.com/sdk-manager on the host PC.
 * Connect the host PC to the Jetson board. (The board can be ON or OFF)
 * Start the SDK manager on the host PC.
-* The jetson device should automatically detected. Your host PC OS should also be automatically detected.
-* Select the required jetpack version.
+* Step 1:
+  ![Step_1][Images/jetson-step1-mid.png]
+    * The jetson device should automatically detected. Your host PC OS should also be automatically detected. If not you can manually select it from the device dropdown list.
+    * Select the required jetpack version.
+    * You can deselect the Host Machine option in Step 1, as the components need not be installed in the host PC for the target board to function.
+* Step 2:
+  ![Step_2][Images/jetson-step2-mid.png]
 * You can select the components to be downloaded in the Step 2.
-* Continue with Step 3 to install the components. NOTE: Keep the storage device as EMMC. If you change it to NVME the flash will not be sucessful. It will give errors when trying to boot the Nvidia jetson.
+* Step 3:
+  ![Step_1][Images/jetson-step3-mid.png]
+  * Continue with Step 3 to install the components and choose Manual setup as shown in the Figure below. Keep the storage device as EMMC. If you change it to NVME the flash will not be sucessful. It will give errors when trying to boot the Nvidia jetson.
+    ![Step_1][Images/jetson-flash-manual1.png]
 * After the flash process is complete, do not shut  the installation process, but do not continue with it either, instead connect the zed box to a monitor and keyboard.
 * Run the script file. This will change the memory from emmc to main memory.
 * Once the script has completed its procedure, reboot the jetson and continue with the installation process.
