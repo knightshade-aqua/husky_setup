@@ -59,13 +59,13 @@ Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husk
 # Debugging serial cable connections issues between husky robot and zed box jetson xavier NX
 * Add the following command to `/etc/ros/setup.bash `    
   `export HUSKY_PORT=/dev/ttyUSB0`
-* Modify prolific rule:
+* Modify prolific rule:  
   `sudo nano /etc/udev/rules.d/50-husky-mcu.rules`
-* Udev rule for the Prolific Serial-to-USB adapter shipped standard with Husky
+* Udev rule for the Prolific Serial-to-USB adapter shipped standard with Husky  
      `SUBSYSTEMS=="usb", ATTRS{manufacturer}=="Prolific*", SYMLINK+="prolific prolific_$attr{devpath}", MODE="0666"`
 * Reload the rules file  
-  ```sudo udevadm control --reload-rules  
-     sudo udevadm trigger```
+  `sudo udevadm control --reload-rules`  
+  `sudo udevadm trigger`
 
 # Spinnaker library installation
 Follow these instructions if you are getting errors regarding Spinnaker.h when trying to build the husky packages
