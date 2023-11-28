@@ -15,12 +15,12 @@ Initially we have to install Ubuntu 20.04 operating systems on the zed box. A re
     * Select the required jetpack version.
     * You can deselect the Host Machine option in Step 1, as the components need not be installed in the host PC for the target board to function.
 * Step 2:  
-  ![Step_2][Images/jetson-step2-mid.png]
+  ![Step_2](Images/jetson-step2-mid.png)
 * You can select the components to be downloaded in the Step 2.
 * Step 3:  
-  ![Step_1][Images/jetson-step3-mid.png]
+  ![Step_3](Images/jetson-step3-mid.png)
   * Continue with Step 3 to install the components and choose Manual setup as shown in the Figure below. Keep the storage device as EMMC. If you change it to NVME the flash will not be sucessful. It will give errors when trying to boot the Nvidia jetson.
-    ![Step_1][Images/jetson-flash-manual1.png]
+  ![Step_3](Images/jetson-flash-manual1.png)
 * After the flash process is complete, do not shut  the installation process, but do not continue with it either, instead connect the zed box to a monitor and keyboard.
 * Run the script file. This will change the memory from emmc to main memory.
 * Once the script has completed its procedure, reboot the jetson and continue with the installation process.
@@ -48,7 +48,7 @@ Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husk
        catkin_make
 * Add setup to the source on terminal startup   
       ` echo 'source ~/catkin_ws/devel/setup.bash'>>~/.bashrc source ~/.bashrc `
-* <br>Note:</br> If you get errors in Spinnaker.h library, follow the Spinnaker library installation section given below
+* **Note:** If you get errors in Spinnaker.h library, follow the Spinnaker library installation section given below
   
 
 # Debugging serial cable connections issues between husky robot and zed box jetson xavier NX
