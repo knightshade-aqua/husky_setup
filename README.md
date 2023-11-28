@@ -35,7 +35,10 @@ Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husk
 * In order to prepare the installation of the husky software execute the following command in a terminal window and follow the instructions as they appear in the terminal
   ``` wget -c https://raw.githubusercontent.com/clearpathrobotics/ros_computer_setup/main/install.sh
       bash install.sh ```
-* There might be a situation were ROS may not be installed. In such a case install ROS from the following link: http://wiki.ros.org/noetic/Installation/Ubuntu
+* Reboot the husky after the script finishes executing.
+* If you do not have interent connectivity after the reboot of the jetson check **Internet Connectivity** section to solve it.
+* To check if ROS is installed run the command `roscore` in a terminal. If ROS is not installed it will give an error. In such a case install ROS from the following link: http://wiki.ros.org/noetic/Installation/Ubuntu
+* To see that the Husky is connected by opening a terminal and executing `rostopic echo /status`. A 1hz message containing the Husky’s diagnostic information shoul be displayed. If the message is not being displayed then first you will have to install the husky packages from source as mention below.
 * The husky package for noetic is not yet available as a .bin file. Hence it has to be installed from source from this github repository: https://github.com/husky/husky_robot.git
 * Create the workspace
   ```  cd mkdir -p catkin_ws/src 
@@ -49,6 +52,8 @@ Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husk
 * Add setup to the source on terminal startup   
       ` echo 'source ~/catkin_ws/devel/setup.bash'>>~/.bashrc source ~/.bashrc `
 * **Note:** If you get errors in Spinnaker.h library, follow the Spinnaker library installation section given below
+* Once the build is complete run the following command: `rosrun husky_bringup install`. Follow the on screen instructions. Restart the jetson.
+* The COMM light on the jetson should turn green. If it is not green run the command: `sudo journalctl -u ros`. It should give some hint of the error.
   
 
 # Debugging serial cable connections issues between husky robot and zed box jetson xavier NX
@@ -63,14 +68,29 @@ Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husk
      sudo udevadm trigger 
 
 # Spinnaker library installation
+Follow these instructions if you are getting errors regarding Spinnaker.h when trying to build the husky packages
 * Uninstall old spinnaker libraries  
   `sudo apt-get remove libspinnaker*; sudo apt-get autoremove`
-* Download libspinnaker 2.6.0 from the given URL. For jetson download the arm64 archive  
-  `https://packages.clearpathrobotics.com/stable/flir/Spinnaker/Ubuntu20.04/`
+* Download libspinnaker 2.6.0 from the given URL. For jetson download the arm64 archive https://packages.clearpathrobotics.com/stable/flir/Spinnaker/Ubuntu20.04/ 
 * Extract it onto the jetson
 * Open the folder in which you have extracted the spinnaker to in the terminal and run the following command
   `./install_spinnaker_arm.sh`
 * Clone the noetic-devel branch of https://github.com/ros-drivers/flir_camera_driver to the src folder of the worspace
 * Remove the build and devel in the ROS workspace
 * Rebuild the workspace with `catkin_make`
+
+# Internet connectivity 
+* To resolve internet connectivity issue follow this article: https://askubuntu.com/questions/1039233/no-wired-connection-wired-unmanaged-ubuntu-18-04
+
+# Microstarin IMU configuration
+* To use Microstrain IMU you will require the Microstarin Inertial Driver
+* You can install the driver from the given link: https://github.com/LORD-MicroStrain/microstrain_inertial
+* The command to install is `sudo apt-get update && sudo apt-get install ros-ROS_DISTRO-microstrain-inertial-driver` (here ROS_DISTRO = noetic)
+* To enable the IMU to collect the data run: `roslaunch microstrain_inertial_driver microstrain.launch`
+* You can access data from the rostopics pertaining to the IMU. For more information, please refer to https://github.com/LORD-MicroStrain/microstrain_inertial
+
+# Troubleshooting
+* To check connectivity of the sereial cable run the following command:
+  `ls -l /dev/ | grep prolific`
+  If there is no output, there might be a possibility that the serial cable is faulty. The required serial cable: https://www.startech.com/en-us/cards-adapters/icusb232sm3 .
 
