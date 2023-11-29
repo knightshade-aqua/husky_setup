@@ -81,7 +81,11 @@ Follow these instructions if you are getting errors regarding Spinnaker.h when t
 * Rebuild the workspace with `catkin_make`
 
 # Internet connectivity 
-* To resolve internet connectivity issue follow this article: https://askubuntu.com/questions/1039233/no-wired-connection-wired-unmanaged-ubuntu-18-04
+* To resolve internet connectivity issue follow this article: https://askubuntu.com/questions/1039233/no-wired-connection-wired-unmanaged-ubuntu-18-04 or this https://forum.linuxconfig.org/t/wired-unmanaged-ubuntu-desktop-issue/1574 (this is more specific)
+* Go to `/etc/netplan/` and open the .yaml file using a text editor (Eg. nano, gedit).
+* Add or change `renderer: networkd` to `renderer: NetworkManager`
+* Then run `sudo netplan apply`
+* This should enable ethernet connections in the network nettings
 
 # Velodyne installation
 * Make sure you have a functioning ethernet connection by following **Internet connectivity** section.
