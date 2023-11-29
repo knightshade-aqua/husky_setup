@@ -11,7 +11,7 @@ Initially we have to install Ubuntu 20.04 operating systems on the zed box. A re
 * Start the SDK manager on the host PC.
 * Step 1:  
   ![Step_1](Images/jetson-step1-mid.png)
-    * The jetson device should automatically detected. Your host PC OS should also be automatically detected. If not you can manually select it from the device dropdown list.
+    * The jetson device should  be automatically detected. Your host PC OS should also be automatically detected. If not, you can manually select it from the device dropdown listas shown in the above figure..
     * Select the required jetpack version.
     * You can deselect the Host Machine option in Step 1, as the components need not be installed in the host PC for the target board to function.
 * Step 2:  
@@ -44,7 +44,7 @@ Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husk
   ```  cd mkdir -p catkin_ws/src 
        cd catkin_ws/src 
        git clone https://github.com/husky/husky_robot.git 
-* Remove husky tests from the package.xml file
+* Remove husky_tests from the package.xml file
 * Build workspace
     ```cd ~/catkin_ws/ rosdep install --from-paths src --ignore-src -r -y 
        sudo apt install python3-catkin-tools python3-osrf-pycommon 
@@ -57,6 +57,7 @@ Clearpath robotics: https://www.clearpathrobotics.com/assets/guides/melodic/husk
   
 
 # Debugging serial cable connections issues between husky robot and zed box jetson xavier NX
+If the COMM light of the husky is RED after performing the following steps might help.
 * Add the following command to `/etc/ros/setup.bash `    
   `export HUSKY_PORT=/dev/ttyUSB0`
 * Modify prolific rule:  
@@ -82,6 +83,14 @@ Follow these instructions if you are getting errors regarding Spinnaker.h when t
 # Internet connectivity 
 * To resolve internet connectivity issue follow this article: https://askubuntu.com/questions/1039233/no-wired-connection-wired-unmanaged-ubuntu-18-04
 
+# Velodyne installation
+* Make sure you have a functioning ethernet connection by following **Internet connectivity** section.
+* The reference to velodyne installation can be found here: http://wiki.ros.org/velodyne/Tutorials/Getting%20Started%20with%20the%20Velodyne%20VLP16
+* Initially you will have to find out the IP address of your velodyne to set it up in the ethernet configuration. For this you can use WireShark. Connect the velodyne to the target device and run wireshark. You should see the IP address on which the velodyne is broadcasting.
+* Follow the instructions given in http://wiki.ros.org/velodyne/Tutorials/Getting%20Started%20with%20the%20Velodyne%20VLP16 to install the velodyne drivers.
+* To obtain data from the velodyne run: `roslaunch velodyne_pointcloud VLP16_points.launch`
+* Sometimes you might face an error where the script might stop working. In such cases, run the command again. We have observed that this is caused as another script is already running in /home/.rosd in the velodyne folder. You can choose to deactivate the velodyne script by commenting out a few lines which lead to the launch of vlp 16 on start-up.
+
 # Microstarin IMU configuration
 * To use Microstrain IMU you will require the Microstarin Inertial Driver
 * You can install the driver from the given link: https://github.com/LORD-MicroStrain/microstrain_inertial
@@ -93,4 +102,5 @@ Follow these instructions if you are getting errors regarding Spinnaker.h when t
 * To check connectivity of the sereial cable run the following command:
   `ls -l /dev/ | grep prolific`
   If there is no output, there might be a possibility that the serial cable is faulty. The required serial cable: https://www.startech.com/en-us/cards-adapters/icusb232sm3 .
+* After making changes to `/etc/ros/setup.bash ` for any given case, run `rosrun husky_bringup install` and restart the target device.
 
